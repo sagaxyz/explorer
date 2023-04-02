@@ -26,10 +26,21 @@ WaitForChainletReadiness()
             --output /dev/null \
             $ETHEREUM_JSONRPC_HTTP_URL)
         if [[ "$status_code" -ne 200 ]] ; then
-            Logger "chainlet not healthy yet. http status code $status_code"
+            Logger "jsonrpc not available yet"
             sleep $HEALTH_DELAY_SECONDS
         else
-            break
+            Logger "jsonrpc is available"
+            block_height=$(curl \
+                --silent -H "Content-Type: application/json" \
+                --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":"99"}' \
+                $ETHEREUM_JSONRPC_HTTP_URL | jq -r .result)
+            if [[ "$block_height" -eq "0x0" ]] ; then
+                Logger "chainlet is not producing blocks yet"
+                sleep $HEALTH_DELAY_SECONDS
+            else
+                Logger "chainlet is producing blocks"
+                break
+            fi
         fi
     done
 }
