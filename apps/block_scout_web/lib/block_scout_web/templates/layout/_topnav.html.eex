@@ -150,7 +150,7 @@
         <!-- Add to Metamask -->
         <li class="nav-item dropdown add-chain-to-mm">
           <a class="nav-link topnav-nav-link active-icon js-btn-add-chain-to-mm btn-add-chain-to-mm" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= gettext("Add") <> " #{sub_network}" %>
+            <%= gettext("Add") <> " #{subnetwork_title}" %>
           </a>
         </li>
         <!-- Dark mode changer -->
