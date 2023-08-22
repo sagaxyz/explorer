@@ -38,6 +38,7 @@ ADD apps ./apps
 ADD config ./config
 ADD rel ./rel
 ADD *.exs ./
+ADD start.sh /app/start.sh
 
 RUN apk add --update nodejs npm
 
