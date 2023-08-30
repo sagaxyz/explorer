@@ -49,4 +49,4 @@ WaitForChainletReadiness
 
 Logger "chainlet is healthy. starting blockscout"
 
-bash -c 'bin/blockscout eval "Elixir.Explorer.ReleaseTasks.create_and_migrate()" && bin/blockscout start'
+sh -c "bin/blockscout eval \"Elixir.Explorer.ReleaseTasks.create_and_migrate()\" && bin/blockscout start"

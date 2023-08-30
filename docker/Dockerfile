@@ -38,6 +38,7 @@ ADD apps ./apps
 ADD config ./config
 ADD rel ./rel
 ADD *.exs ./
+ADD start.sh /app/start.sh
 
 RUN apk add --update nodejs npm
 
@@ -70,7 +71,7 @@ ENV RELEASE_VERSION=${RELEASE_VERSION}
 ARG BLOCKSCOUT_VERSION
 ENV BLOCKSCOUT_VERSION=${BLOCKSCOUT_VERSION}
 
-RUN apk --no-cache --update add jq
+RUN apk --no-cache --update add curl jq
 
 WORKDIR /app
 
